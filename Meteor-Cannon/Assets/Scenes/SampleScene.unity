@@ -134,11 +134,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 417890, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 417890, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 417890, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -181,6 +181,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4073754853039063923, guid: 3950bd599acbcfd4194d882db9244b5e,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4798643605582226552, guid: 3950bd599acbcfd4194d882db9244b5e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -206,6 +211,11 @@ PrefabInstance:
       propertyPath: startDelay.scalar
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5957681654247553514, guid: 3950bd599acbcfd4194d882db9244b5e,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6224955967911016077, guid: 3950bd599acbcfd4194d882db9244b5e,
         type: 3}
       propertyPath: m_IsActive
@@ -220,6 +230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: startDelay.scalar
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7262587865458830511, guid: 3950bd599acbcfd4194d882db9244b5e,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8429680936175055165, guid: 3950bd599acbcfd4194d882db9244b5e,
         type: 3}
@@ -321,7 +336,7 @@ Transform:
   m_GameObject: {fileID: 421173431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 10.84}
+  m_LocalScale: {x: 50, y: 5, z: 10.84}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -355,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fa2525d865b094eb5ecc9dd65b8bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meteor: {fileID: 569896271, guid: 607f852e894b2474e8037bde96a3f38c, type: 3}
+  meteor: {fileID: 38444867993114409, guid: 607f852e894b2474e8037bde96a3f38c, type: 3}
   meteors: []
 --- !u!4 &682623300
 Transform:
@@ -514,7 +529,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 102.2
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -540,7 +555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.97, z: -10.62}
+  m_LocalPosition: {x: 0, y: 8, z: -11.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

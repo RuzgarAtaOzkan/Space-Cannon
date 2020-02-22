@@ -10,8 +10,8 @@ public class CannonMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit)) { transform.position = new Vector3(hit.point.x, transform.position.y, transform.position.z); }
-        if (transform.position.x > 6f) { transform.position = new Vector3(6f, transform.position.y, transform.position.z); }
-        if (transform.position.x < -6f) { transform.position = new Vector3(-6f, transform.position.y, transform.position.z); }
+        if (transform.position.x > 4f) { transform.position = new Vector3(4f, transform.position.y, transform.position.z); }
+        if (transform.position.x < -4f) { transform.position = new Vector3(-4f, transform.position.y, transform.position.z); }
 
     }
 }

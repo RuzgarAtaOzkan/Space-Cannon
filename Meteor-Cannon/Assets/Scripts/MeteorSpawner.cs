@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour
 {
-    [SerializeField] MeteorMovement meteor;
-    [SerializeField] List<MeteorMovement> meteors;
+    [SerializeField] Meteor meteor;
+    [SerializeField] List<Meteor> meteors;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnMeteor());
@@ -22,19 +21,25 @@ public class MeteorSpawner : MonoBehaviour
     {
         while (true)
         {
-            MeteorMovement meteorToAdd = Instantiate(meteor, new Vector3(Random.Range(6f, -6f), 9f, -4f), Quaternion.identity);
+            Meteor meteorToAdd = Instantiate(meteor, new Vector3(Random.Range(4f, -4f), 21f, -4f), Quaternion.identity);
+            meteorToAdd.meteorHealth = meteorToAdd.RandomHealth();
+            meteorToAdd.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
             meteors.Add(meteorToAdd);
-            yield return new WaitForSeconds(Random.Range(0.8f, 1.5f));
+            yield return new WaitForSeconds(Random.Range(1.5f, 3f));
         }
     }
 
     void DestroyMeteors()
     {
-        foreach (MeteorMovement meteor in meteors)
+        foreach (Meteor meteor in meteors)
         {
             if (meteor != null)
             {
-                if (meteor.transform.position.y < -2f) { Destroy(meteor.gameObject); }
+                if (meteor.transform.position.y < -5f) 
+                {
+                    meteors.Remove(meteor);
+                    Destroy(meteor.gameObject); 
+                }
             }
         }
     }
