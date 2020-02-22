@@ -30,13 +30,12 @@ public class MeteorCollision : MonoBehaviour
     public void OnParticleCollision(GameObject other)
     {
         ProcessParticles();
-
         meteor.meteorHealth -= 4f;
         if (meteor.meteorHealth < 0)
         {
             meteor.DivideMeteor();
             Destroy(gameObject);
-            meteorSpawner.meteorQueue.Dequeue();
+            if (meteorSpawner.meteorQueue != null) { meteorSpawner.meteorQueue.Dequeue(); } 
         }
     }
 
@@ -48,10 +47,17 @@ public class MeteorCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Cube" || collision.gameObject.name == gameObject.name)
+        if (collision.gameObject.name == "Cube")
+        {
+            rb.AddForce(Vector3.up * 650f);
+            rb.AddForce(Vector3.left * 30f);
+            Handheld.Vibrate();
+        }
+        if (collision.gameObject.name == gameObject.name && collision.gameObject.GetComponent<Meteor>().isForceable)
         {
             rb.AddForce(Vector3.up * 650f);
             rb.AddForce(Vector3.left * 30f);
         }
     }
+    
 }

@@ -2,9 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CannonMovement : MonoBehaviour
 {
+
+    public bool isDead = false;
+    [SerializeField] GameObject bullet1, bullet2;
+    public bool isBonusActive = true;
+
     private void Update()
     {
         RaycastHit hit;
@@ -20,10 +26,50 @@ public class CannonMovement : MonoBehaviour
         {
             ProcessDeath();
         }
+        if (collision.gameObject.name == "Bonus")
+        {
+            StartCoroutine(ProcessBonusFire());
+            bullet1.SetActive(true);
+        }
+    }
+
+    IEnumerator ProcessBonusFire()
+    {
+        while (isBonusActive)
+        {
+            bullet1.SetActive(isBonusActive);
+            bullet2.SetActive(isBonusActive);
+            isBonusActive = false;
+            yield return new WaitForSeconds(5f);
+        }
+        //bullet1.SetActive(isBonusActive);
+        //bullet2.SetActive(isBonusActive);
     }
 
     private void ProcessDeath()
     {
-        
+        isDead = true;
+        StartCoroutine(Shake());
+    }
+
+    IEnumerator Shake()
+    {
+        float xRotation = 0f;
+        float yRotation = 0f;
+        bool isShaking = true;
+        int count = 0;
+        while (isShaking)
+        {
+            float magnitudeX = UnityEngine.Random.Range(-2f, 2f);
+            float magnitudeY = UnityEngine.Random.Range(-2f, 2f);
+            Camera.main.transform.rotation = Quaternion.Euler(xRotation += magnitudeX, yRotation += magnitudeY, transform.rotation.z);
+            count++;
+            if (count > 6) 
+            { 
+                isShaking = false;
+                Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.z);
+            }
+            yield return new WaitForSeconds(0.06f);
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Meteor : MonoBehaviour
     Rigidbody rb;
 
     [SerializeField] public bool isDivided = false;
+    public bool isForceable = true;
 
     private void Start()
     {
@@ -37,27 +38,21 @@ public class Meteor : MonoBehaviour
     public void DivideMeteor()
     {
         if (isDivided) { return; }
-
         var dividedMeteor1 = Instantiate(this, transform.position, Quaternion.identity);
         var dividedMeteor2 = Instantiate(this, transform.position, Quaternion.identity);
-
+        dividedMeteor1.GetComponent<Rigidbody>().AddForce(Vector3.right * 50f);
+        dividedMeteor2.GetComponent<Rigidbody>().AddForce(Vector3.left * 50f);
         float dividedScale = transform.localScale.x / 2;
-
         dividedMeteor1.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);
         dividedMeteor2.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);
-            
         dividedMeteor1.transform.localScale = new Vector3(dividedScale, dividedScale, dividedScale);
         dividedMeteor2.transform.localScale = new Vector3(dividedScale, dividedScale, dividedScale);
-
         dividedMeteor1.transform.rotation = Quaternion.Euler(-90f, 0, 0);
         dividedMeteor2.transform.rotation = Quaternion.Euler(-90f, 0, 0);
-
-        dividedMeteor1.GetComponent<Rigidbody>().AddForce(Vector3.right * 70f);
-        dividedMeteor2.GetComponent<Rigidbody>().AddForce(Vector3.right * -70f);
-
+        dividedMeteor1.isForceable = false;
+        dividedMeteor2.isForceable = false;
         dividedMeteor1.isDivided = true;
         dividedMeteor2.isDivided = true;
-
         isDivided = true;
     }
 }
