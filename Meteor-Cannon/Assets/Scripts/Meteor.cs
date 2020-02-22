@@ -52,8 +52,8 @@ public class Meteor : MonoBehaviour
         dividedMeteor1.transform.rotation = Quaternion.Euler(-90f, 0, 0);
         dividedMeteor2.transform.rotation = Quaternion.Euler(-90f, 0, 0);
 
-        dividedMeteor1.GetComponent<Rigidbody>().AddForce(Vector3.right * 20f);
-        dividedMeteor2.GetComponent<Rigidbody>().AddForce(Vector3.right * -20f);
+        dividedMeteor1.GetComponent<Rigidbody>().AddForce(Vector3.right * 70f);
+        dividedMeteor2.GetComponent<Rigidbody>().AddForce(Vector3.right * -70f);
 
         dividedMeteor1.isDivided = true;
         dividedMeteor2.isDivided = true;

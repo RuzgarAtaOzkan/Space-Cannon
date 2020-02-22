@@ -221,6 +221,7 @@ MonoBehaviour:
   particleBlowFX: {fileID: 8559016711695018431, guid: bcefb07ac0ba8f2499e1863e35c29368,
     type: 3}
   meteor: {fileID: 38444867993114409}
+  meteorSpawner: {fileID: 0}
 --- !u!114 &38444867993114409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,3 +235,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteorHealth: 0
+  firstMeteorHealth: 0
+  isDivided: 0

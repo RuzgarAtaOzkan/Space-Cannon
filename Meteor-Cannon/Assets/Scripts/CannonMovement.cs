@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,5 +12,18 @@ public class CannonMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit)) { transform.position = new Vector3(hit.point.x, transform.position.y, transform.position.z); }
         if (transform.position.x > 4f) { transform.position = new Vector3(4f, transform.position.y, transform.position.z); }
         if (transform.position.x < -4f) { transform.position = new Vector3(-4f, transform.position.y, transform.position.z); }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Meteor")
+        {
+            ProcessDeath();
+        }
+    }
+
+    private void ProcessDeath()
+    {
+        
     }
 }

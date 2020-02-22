@@ -19,7 +19,7 @@ public class MeteorSpawner : MonoBehaviour
         while (true)
         {
             SpawnLoop();
-            yield return new WaitForSeconds(Random.Range(2.5f, 4f));
+            yield return new WaitForSeconds(Random.Range(3f, 5f));
         }
     }
 
