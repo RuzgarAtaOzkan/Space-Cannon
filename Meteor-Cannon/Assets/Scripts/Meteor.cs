@@ -21,7 +21,7 @@ public class Meteor : MonoBehaviour
     private void Update()
     {
         textMesh.text = meteorHealth.ToString();
-        if (transform.position.y < 3f)
+        if (transform.position.y < 3.5f)
         {
             rb.AddForce(Vector3.up * 600f);
         } 

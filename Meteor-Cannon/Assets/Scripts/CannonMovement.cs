@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
 public class CannonMovement : MonoBehaviour
 {
-
     public bool isDead = false;
-    [SerializeField] GameObject bullet1, bullet2;
     public bool isBonusActive = true;
+    [SerializeField] GameObject bullet1, bullet2;
 
     private void Update()
     {
