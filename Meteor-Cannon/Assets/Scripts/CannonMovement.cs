@@ -60,7 +60,6 @@ public class CannonMovement : MonoBehaviour
         Transform[] deathParticles = deathParticle.GetComponentsInChildren<Transform>();
         foreach (Transform particle in deathParticles) { particle.localScale = new Vector3(0.4f, 0.4f, 0.4f); }
         Destroy(deathParticle.gameObject, deathParticle.main.duration);
-        //Destroy(gameObject);
         flashImage.CrossFadeAlpha(1f, 0.2f, false);
         StartCoroutine(FlashEffect());
     }
@@ -70,11 +69,11 @@ public class CannonMovement : MonoBehaviour
         while (isFlashing)
         {
             flashCount++;
-            Debug.Log(flashCount);
             if (flashCount > 12) { isFlashing = false; }
             yield return null;
         }
         flashImage.CrossFadeAlpha(0.0f, 0.2f, false);
+        Destroy(gameObject);
     }
 
 }
