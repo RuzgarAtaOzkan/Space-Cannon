@@ -9,7 +9,6 @@ public class CannonMovement : MonoBehaviour
     public bool isDead = false;
     public bool isBonusActive = false;
     [SerializeField] GameObject bullet1, bullet2;
-    [SerializeField] GameObject bonus;
 
     private void Update()
     {

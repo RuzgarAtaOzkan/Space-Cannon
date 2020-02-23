@@ -28,7 +28,9 @@ public class BonusMove : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             var bonusParticle = Instantiate(bonusFX, transform.position, Quaternion.identity);
-            Destroy(bonusParticle, bonusParticle.main.duration);
+            Transform[] particleChilds = bonusParticle.GetComponentsInChildren<Transform>();
+            foreach (Transform particleChild in particleChilds) { particleChild.localScale = new Vector3(0.4f, 0.4f, 0.4f); }
+            Destroy(bonusParticle.gameObject, bonusParticle.main.duration);
             Destroy(gameObject);
         }
     }
