@@ -9,6 +9,14 @@ public class CannonMovement : MonoBehaviour
     public bool isDead = false;
     public bool isBonusActive = false;
     [SerializeField] GameObject bullet1, bullet2;
+    [SerializeField] ParticleSystem deathFX;
+    [SerializeField] Image flashImage;
+    bool isFading = true;
+
+    private void Start()
+    {
+        flashImage.canvasRenderer.SetAlpha(0.0f);
+    }
 
     private void Update()
     {
@@ -29,7 +37,6 @@ public class CannonMovement : MonoBehaviour
         {
             isBonusActive = true;
             StartCoroutine(ProcessBonusFire());
-            
         }
     }
 
@@ -50,6 +57,30 @@ public class CannonMovement : MonoBehaviour
     {
         isDead = true;
         StartCoroutine(Shake());
+        var deathParticle = Instantiate(deathFX, transform.position, Quaternion.identity);
+        Transform[] deathParticles = deathParticle.GetComponentsInChildren<Transform>();
+        foreach (Transform particle in deathParticles) { particle.localScale = new Vector3(0.4f, 0.4f, 0.4f); }
+        Destroy(deathParticle.gameObject, deathParticle.main.duration);
+        Destroy(gameObject);
+        FlashEffect();
+    }
+
+    private void FlashEffect()
+    {
+
+        StartCoroutine(FadeIn());
+
+    }
+
+    IEnumerator FadeIn()
+    {
+        while (isFading)
+        {
+            flashImage.CrossFadeAlpha(0.6f, 0.8f, false);
+            isFading = false;
+            yield return new WaitForSeconds(2f);
+        }
+        flashImage.CrossFadeAlpha(0.0f, 0.8f, true);
     }
 
     IEnumerator Shake()
@@ -71,5 +102,7 @@ public class CannonMovement : MonoBehaviour
             }
             yield return new WaitForSeconds(0.06f);
         }
+        Application.Quit();
+        
     }
 }

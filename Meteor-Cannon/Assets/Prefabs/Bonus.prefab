@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249495a690abdee4881de443bd0877d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonusFX: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 3}
+  bonusFX: {fileID: 579791144829935602, guid: 60ed674661acb6c43ac47c137f53ae77, type: 3}
