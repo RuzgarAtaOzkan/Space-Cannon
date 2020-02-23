@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class CannonMovement : MonoBehaviour
 {
     public bool isDead = false;
-    public bool isBonusActive = true;
+    public bool isBonusActive = false;
     [SerializeField] GameObject bullet1, bullet2;
+    [SerializeField] GameObject bonus;
 
     private void Update()
     {
@@ -19,30 +20,31 @@ public class CannonMovement : MonoBehaviour
         if (transform.position.x < -4f) { transform.position = new Vector3(-4f, transform.position.y, transform.position.z); }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Meteor")
         {
             ProcessDeath();
         }
-        if (collision.gameObject.name == "Bonus")
+        else if (collision.gameObject.tag == "Bonus")
         {
+            isBonusActive = true;
             StartCoroutine(ProcessBonusFire());
-            bullet1.SetActive(true);
+            
         }
     }
 
-    IEnumerator ProcessBonusFire()
+    private IEnumerator ProcessBonusFire()
     {
         while (isBonusActive)
         {
             bullet1.SetActive(isBonusActive);
             bullet2.SetActive(isBonusActive);
             isBonusActive = false;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(7f);
         }
-        //bullet1.SetActive(isBonusActive);
-        //bullet2.SetActive(isBonusActive);
+        bullet1.SetActive(isBonusActive);
+        bullet2.SetActive(isBonusActive);
     }
 
     private void ProcessDeath()
