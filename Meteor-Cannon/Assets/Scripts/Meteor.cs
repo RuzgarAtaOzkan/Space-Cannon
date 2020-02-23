@@ -21,10 +21,7 @@ public class Meteor : MonoBehaviour
     private void Update()
     {
         textMesh.text = meteorHealth.ToString();
-        if (transform.position.y < 3.5f)
-        {
-            rb.AddForce(Vector3.up * 600f);
-        } 
+         
     }
 
     public float RandomHealth()
@@ -41,7 +38,7 @@ public class Meteor : MonoBehaviour
         var dividedMeteor1 = Instantiate(this, transform.position, Quaternion.identity);
         var dividedMeteor2 = Instantiate(this, transform.position, Quaternion.identity);
         dividedMeteor1.GetComponent<Rigidbody>().AddForce(Vector3.right * 50f);
-        dividedMeteor2.GetComponent<Rigidbody>().AddForce(Vector3.left * 50f);
+        dividedMeteor2.GetComponent<Rigidbody>().AddForce(Vector3.right * -50f);
         float dividedScale = transform.localScale.x / 2;
         dividedMeteor1.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);
         dividedMeteor2.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);

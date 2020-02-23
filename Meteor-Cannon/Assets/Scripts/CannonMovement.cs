@@ -8,14 +8,17 @@ public class CannonMovement : MonoBehaviour
 {
     public bool isDead = false;
     public bool isBonusActive = false;
+    bool isFlashing = true;
+    int flashCount = 0;
     [SerializeField] GameObject bullet1, bullet2;
     [SerializeField] ParticleSystem deathFX;
     [SerializeField] Image flashImage;
-    bool isFading = true;
+    
 
     private void Start()
     {
         flashImage.canvasRenderer.SetAlpha(0.0f);
+        isFlashing = true;
     }
 
     private void Update()
@@ -29,11 +32,8 @@ public class CannonMovement : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Meteor")
-        {
-            ProcessDeath();
-        }
-        else if (collision.gameObject.tag == "Bonus")
+        if (collision.gameObject.tag == "Meteor") { ProcessDeath(); }
+        if (collision.gameObject.tag == "Bonus")
         {
             isBonusActive = true;
             StartCoroutine(ProcessBonusFire());
@@ -56,53 +56,25 @@ public class CannonMovement : MonoBehaviour
     private void ProcessDeath()
     {
         isDead = true;
-        StartCoroutine(Shake());
-        var deathParticle = Instantiate(deathFX, transform.position, Quaternion.identity);
+        ParticleSystem deathParticle = Instantiate(deathFX, transform.position, Quaternion.identity);
         Transform[] deathParticles = deathParticle.GetComponentsInChildren<Transform>();
         foreach (Transform particle in deathParticles) { particle.localScale = new Vector3(0.4f, 0.4f, 0.4f); }
         Destroy(deathParticle.gameObject, deathParticle.main.duration);
-        Destroy(gameObject);
-        FlashEffect();
+        //Destroy(gameObject);
+        flashImage.CrossFadeAlpha(1f, 0.2f, false);
+        StartCoroutine(FlashEffect());
     }
 
-    private void FlashEffect()
+    private IEnumerator FlashEffect()
     {
-
-        StartCoroutine(FadeIn());
-
-    }
-
-    IEnumerator FadeIn()
-    {
-        while (isFading)
+        while (isFlashing)
         {
-            flashImage.CrossFadeAlpha(0.6f, 0.8f, false);
-            isFading = false;
-            yield return new WaitForSeconds(2f);
+            flashCount++;
+            Debug.Log(flashCount);
+            if (flashCount > 12) { isFlashing = false; }
+            yield return null;
         }
-        flashImage.CrossFadeAlpha(0.0f, 0.8f, true);
+        flashImage.CrossFadeAlpha(0.0f, 0.2f, false);
     }
 
-    IEnumerator Shake()
-    {
-        float xRotation = 0f;
-        float yRotation = 0f;
-        bool isShaking = true;
-        int count = 0;
-        while (isShaking)
-        {
-            float magnitudeX = UnityEngine.Random.Range(-2f, 2f);
-            float magnitudeY = UnityEngine.Random.Range(-2f, 2f);
-            Camera.main.transform.rotation = Quaternion.Euler(xRotation += magnitudeX, yRotation += magnitudeY, transform.rotation.z);
-            count++;
-            if (count > 6) 
-            { 
-                isShaking = false;
-                Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.z);
-            }
-            yield return new WaitForSeconds(0.06f);
-        }
-        Application.Quit();
-        
-    }
 }
