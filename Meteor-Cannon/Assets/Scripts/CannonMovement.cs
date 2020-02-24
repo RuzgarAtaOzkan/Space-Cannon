@@ -12,6 +12,8 @@ public class CannonMovement : MonoBehaviour
     [SerializeField] GameObject bullet1, bullet2;
     [SerializeField] ParticleSystem deathFX;
     [SerializeField] Image flashImage;
+    [SerializeField] GameObject meteorSpawner;
+    [SerializeField] bool startGame;
 
     private void Start()
     {
@@ -26,6 +28,11 @@ public class CannonMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit)) { transform.position = new Vector3(hit.point.x, transform.position.y, transform.position.z); }
         if (transform.position.x > 4f) { transform.position = new Vector3(4f, transform.position.y, transform.position.z); }
         if (transform.position.x < -4f) { transform.position = new Vector3(-4f, transform.position.y, transform.position.z); }
+        if (startGame)
+        {
+            meteorSpawner.SetActive(true);
+            startGame = false;
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -59,6 +66,7 @@ public class CannonMovement : MonoBehaviour
         foreach (Transform particle in deathParticles) { particle.localScale = new Vector3(0.4f, 0.4f, 0.4f); }
         Destroy(deathParticle.gameObject, deathParticle.main.duration);
         StartCoroutine(FlashEffect());
+        
     }
 
     private IEnumerator FlashEffect()
@@ -71,6 +79,8 @@ public class CannonMovement : MonoBehaviour
         }
         flashImage.CrossFadeAlpha(0.0f, 0.2f, false);
         //Destroy(gameObject);
+        yield return new WaitForSeconds(0.3f);
+        Debug.Break();
     }
 
 }
