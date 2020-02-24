@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//finished the most parts
+
 public class CannonMovement : MonoBehaviour
 {
     public bool isDead = false;
