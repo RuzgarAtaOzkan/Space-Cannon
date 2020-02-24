@@ -7,12 +7,14 @@ public class MeteorCollision : MonoBehaviour
     [SerializeField] ParticleSystem particleBlowFX;
     [SerializeField] Meteor meteor;
     [SerializeField] MeteorSpawner meteorSpawner;
+    [SerializeField] ManageGame manageGame;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         meteorSpawner = FindObjectOfType<MeteorSpawner>();
+        manageGame = FindObjectOfType<ManageGame>();
     }
 
     private void Update()
@@ -30,7 +32,8 @@ public class MeteorCollision : MonoBehaviour
     {
         ProcessParticles();
         meteor.meteorHealth -= 4f;
-        if (meteor.meteorHealth < 0)
+        manageGame.IncreasePoints();
+        if (meteor.meteorHealth < 1)
         {
             meteor.DivideMeteor();
             Destroy(gameObject);

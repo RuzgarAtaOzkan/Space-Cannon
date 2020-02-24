@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Meteor : MonoBehaviour
 {
     public float meteorHealth;
+
     public float firstMeteorHealth;
     public bool isForceable = true;
+    [SerializeField] public bool isDivided = false;
     TextMesh textMesh;
     Rigidbody rb;
-    [SerializeField] public bool isDivided = false;
-
+    
     private void Start()
     {
         textMesh = GetComponentInChildren<TextMesh>();
