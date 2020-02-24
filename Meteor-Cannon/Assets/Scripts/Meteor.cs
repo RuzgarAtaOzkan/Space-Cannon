@@ -6,11 +6,10 @@ public class Meteor : MonoBehaviour
 {
     public float meteorHealth;
     public float firstMeteorHealth;
+    public bool isForceable = true;
     TextMesh textMesh;
     Rigidbody rb;
-
     [SerializeField] public bool isDivided = false;
-    public bool isForceable = true;
 
     private void Start()
     {
@@ -21,7 +20,13 @@ public class Meteor : MonoBehaviour
     private void Update()
     {
         textMesh.text = meteorHealth.ToString();
-         
+        ControlVelocities();
+    }
+
+    private void ControlVelocities()
+    {
+        if (rb.velocity.x > 6f) { rb.velocity = new Vector3(6f, rb.velocity.y, rb.velocity.z); }
+        else if (rb.velocity.x < -6f) { rb.velocity = new Vector3(-6f, rb.velocity.y, rb.velocity.z); }
     }
 
     public float RandomHealth()
@@ -35,11 +40,26 @@ public class Meteor : MonoBehaviour
     public void DivideMeteor()
     {
         if (isDivided) { return; }
-        var dividedMeteor1 = Instantiate(this, transform.position, Quaternion.identity);
+        var dividedMeteor1 = Instantiate(this, transform.position + Vector3.right, Quaternion.identity);
         var dividedMeteor2 = Instantiate(this, transform.position, Quaternion.identity);
-        dividedMeteor1.GetComponent<Rigidbody>().AddForce(Vector3.right * 50f);
-        dividedMeteor2.GetComponent<Rigidbody>().AddForce(Vector3.right * -50f);
+
+        /*if (dividedMeteor1.transform.position.x < dividedMeteor2.transform.position.x)
+        {
+            dividedMeteor1.rb.velocity = new Vector3(0f, 0f, 0f);
+            dividedMeteor2.rb.velocity = new Vector3(0f, 0f, 0f);
+            dividedMeteor1.rb.AddForce(Vector3.right * -5f);
+            dividedMeteor2.rb.AddForce(Vector3.right * 5f);
+        } 
+        else if (dividedMeteor1.transform.position.x > dividedMeteor2.transform.position.x)
+        {
+            dividedMeteor1.rb.velocity = new Vector3(0f, 0f, 0f);
+            dividedMeteor2.rb.velocity = new Vector3(0f, 0f, 0f);
+            dividedMeteor1.rb.AddForce(Vector3.right * 5f);
+            dividedMeteor2.rb.AddForce(Vector3.right * -5f);
+        }*/
+
         float dividedScale = transform.localScale.x / 2;
+        if (dividedScale < 40f) { dividedScale = 50f; }
         dividedMeteor1.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);
         dividedMeteor2.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);
         dividedMeteor1.transform.localScale = new Vector3(dividedScale, dividedScale, dividedScale);

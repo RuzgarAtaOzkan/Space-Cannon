@@ -13,7 +13,6 @@ public class MeteorCollision : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         meteorSpawner = FindObjectOfType<MeteorSpawner>();
-        rb.AddForce(Vector3.right * 100f);
     }
 
     private void Update()
@@ -23,8 +22,8 @@ public class MeteorCollision : MonoBehaviour
 
     private void MoveIfEdge()
     {
-        if (transform.position.x < -4f) { rb.AddForce(Vector3.right * 70f); }
-        if (transform.position.x > 4) { rb.AddForce(Vector3.right * -70f); }
+        if (transform.position.x < -4f) { rb.AddForce(Vector3.right * 30f); }
+        if (transform.position.x > 4) { rb.AddForce(Vector3.right * -30f); }
     }
 
     public void OnParticleCollision(GameObject other)
@@ -35,7 +34,7 @@ public class MeteorCollision : MonoBehaviour
         {
             meteor.DivideMeteor();
             Destroy(gameObject);
-            if (meteorSpawner.meteorQueue != null) { meteorSpawner.meteorQueue.Dequeue(); } 
+            if (meteorSpawner.meteorQueue.Count > 0) { meteorSpawner.meteorQueue.Dequeue(); } 
         }
     }
 
@@ -49,14 +48,13 @@ public class MeteorCollision : MonoBehaviour
     {
         if (collision.gameObject.name == "Cube")
         {
-            rb.AddForce(Vector3.up * 650f);
-            rb.AddForce(Vector3.left * 30f);
+            rb.AddForce(Vector3.up * 750f);
+            //rb.AddForce(Vector3.left * 30f);
             Handheld.Vibrate();
         }
         if (collision.gameObject.name == gameObject.name && collision.gameObject.GetComponent<Meteor>().isForceable)
         {
-            rb.AddForce(Vector3.up * 650f);
-            rb.AddForce(Vector3.left * 30f);
+            rb.AddForce(Vector3.up * 750f);
         }
     }
     

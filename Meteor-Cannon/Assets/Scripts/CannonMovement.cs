@@ -9,11 +9,9 @@ public class CannonMovement : MonoBehaviour
     public bool isDead = false;
     public bool isBonusActive = false;
     bool isFlashing = true;
-    int flashCount = 0;
     [SerializeField] GameObject bullet1, bullet2;
     [SerializeField] ParticleSystem deathFX;
     [SerializeField] Image flashImage;
-    
 
     private void Start()
     {
@@ -60,7 +58,6 @@ public class CannonMovement : MonoBehaviour
         Transform[] deathParticles = deathParticle.GetComponentsInChildren<Transform>();
         foreach (Transform particle in deathParticles) { particle.localScale = new Vector3(0.4f, 0.4f, 0.4f); }
         Destroy(deathParticle.gameObject, deathParticle.main.duration);
-        flashImage.CrossFadeAlpha(1f, 0.2f, false);
         StartCoroutine(FlashEffect());
     }
 
@@ -68,12 +65,12 @@ public class CannonMovement : MonoBehaviour
     {
         while (isFlashing)
         {
-            flashCount++;
-            if (flashCount > 12) { isFlashing = false; }
-            yield return null;
+            flashImage.CrossFadeAlpha(1f, 0.2f, false);
+            isFlashing = false;
+            yield return new WaitForSeconds(0.12f);
         }
         flashImage.CrossFadeAlpha(0.0f, 0.2f, false);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
 }
