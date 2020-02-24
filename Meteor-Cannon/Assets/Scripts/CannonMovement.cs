@@ -16,6 +16,7 @@ public class CannonMovement : MonoBehaviour
     [SerializeField] GameObject meteorSpawner;
     [SerializeField] ManageGame manageGame;
     [SerializeField] public bool startGame;
+    Touch touch;
 
     private void Start()
     {
@@ -28,8 +29,9 @@ public class CannonMovement : MonoBehaviour
 
     private void Update()
     {
+        touch = Input.GetTouch(0);
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(touch.position);
         if (Physics.Raycast(ray, out hit)) { transform.position = new Vector3(hit.point.x, transform.position.y, transform.position.z); }
         if (transform.position.x > 4f) { transform.position = new Vector3(4f, transform.position.y, transform.position.z); }
         if (transform.position.x < -4f) { transform.position = new Vector3(-4f, transform.position.y, transform.position.z); }

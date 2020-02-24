@@ -197,6 +197,11 @@ PrefabInstance:
       propertyPath: meteorSpawner
       value: 
       objectReference: {fileID: 682623298}
+    - target: {fileID: 5300192954536047419, guid: 3950bd599acbcfd4194d882db9244b5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f573e0bc5d8a964e9844d99cfba9320, type: 2}
     - target: {fileID: 5957681654247553514, guid: 3950bd599acbcfd4194d882db9244b5e,
         type: 3}
       propertyPath: playOnAwake
@@ -217,6 +222,11 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9217209963134527102, guid: 3950bd599acbcfd4194d882db9244b5e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f573e0bc5d8a964e9844d99cfba9320, type: 2}
     m_RemovedComponents:
     - {fileID: 5099644824926658778, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
@@ -263,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fef856f1f8f8514d92daf95dde14172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReloadable: 0
   meteorHitPoint: 0
   hitPointText: {fileID: 0}
   playButton: {fileID: 0}
