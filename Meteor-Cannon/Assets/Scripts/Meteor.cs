@@ -27,8 +27,8 @@ public class Meteor : MonoBehaviour
 
     private void ControlVelocities()
     {
-        if (rb.velocity.x > 6f) { rb.velocity = new Vector3(6f, rb.velocity.y, rb.velocity.z); }
-        else if (rb.velocity.x < -6f) { rb.velocity = new Vector3(-6f, rb.velocity.y, rb.velocity.z); }
+        if (rb.velocity.x > 6f) { rb.velocity = new Vector3(5f, rb.velocity.y, rb.velocity.z); }
+        else if (rb.velocity.x < -6f) { rb.velocity = new Vector3(-5f, rb.velocity.y, rb.velocity.z); }
     }
 
     public float RandomHealth()

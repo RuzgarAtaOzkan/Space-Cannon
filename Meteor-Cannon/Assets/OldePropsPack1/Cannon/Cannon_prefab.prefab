@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 417890}
   - component: {fileID: 3317612}
   - component: {fileID: 2351224}
+  - component: {fileID: -8824639845887336397}
   - component: {fileID: 5294171006131764983}
   - component: {fileID: 5865120164592435516}
   - component: {fileID: 1459717245}
   m_Layer: 0
   m_Name: Cannon_prefab
-  m_TagString: Meteor
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +86,102 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!82 &-8824639845887336397
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129134}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!65 &5294171006131764983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,9 +224,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  isBonusActive: 1
+  startGame: 0
   bullet1: {fileID: 6224955967911016077}
   bullet2: {fileID: 6919629858435605448}
-  isBonusActive: 1
+  deathFX: {fileID: 198537984209914932, guid: c3fd7df4a850ba54fad59a582eed8d10, type: 3}
+  flashImage: {fileID: 0}
+  meteorSpawner: {fileID: 0}
+  manageGame: {fileID: 0}
+  cannonDeathSFX: {fileID: 8300000, guid: 1fd31868d68903d4f9e2c4a3b7ef98f3, type: 3}
 --- !u!1001 &2708217505170880686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,7 +383,7 @@ PrefabInstance:
     - target: {fileID: 2097946304396049373, guid: 2e42151aea3cfed4f8ac2e9a9817ee67,
         type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2097946304396049373, guid: 2e42151aea3cfed4f8ac2e9a9817ee67,
         type: 3}
@@ -296,7 +399,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3555662f05cb52f4ea4679ed3cba2d66, type: 2}
+      objectReference: {fileID: 2100000, guid: 2f573e0bc5d8a964e9844d99cfba9320, type: 2}
     - target: {fileID: 3484259208596350025, guid: 2e42151aea3cfed4f8ac2e9a9817ee67,
         type: 3}
       propertyPath: m_Mesh
@@ -426,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 2097946304396049373, guid: 2e42151aea3cfed4f8ac2e9a9817ee67,
         type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2097946304396049373, guid: 2e42151aea3cfed4f8ac2e9a9817ee67,
         type: 3}
@@ -442,7 +545,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3555662f05cb52f4ea4679ed3cba2d66, type: 2}
+      objectReference: {fileID: 2100000, guid: 2f573e0bc5d8a964e9844d99cfba9320, type: 2}
     - target: {fileID: 3484259208596350025, guid: 2e42151aea3cfed4f8ac2e9a9817ee67,
         type: 3}
       propertyPath: m_Mesh

@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 4640780569203407536}
   - component: {fileID: 1257665031541686844}
   - component: {fileID: 3671847967589808737}
+  - component: {fileID: 7778361258591870912}
   - component: {fileID: 8346667109384184199}
   - component: {fileID: -869642968303434242}
   - component: {fileID: 5350977915541241681}
@@ -177,6 +178,102 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!82 &7778361258591870912
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539412230784186596}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!135 &8346667109384184199
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -222,6 +319,10 @@ MonoBehaviour:
     type: 3}
   meteor: {fileID: 38444867993114409}
   meteorSpawner: {fileID: 0}
+  manageGame: {fileID: 0}
+  meteorGroundHitSFX: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
+  meteorSplitSFX: {fileID: 8300000, guid: 958408b32ccf3714ea02821877b0870c, type: 3}
+  meteorDamageSFX: {fileID: 0}
 --- !u!114 &38444867993114409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,4 +337,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorHealth: 0
   firstMeteorHealth: 0
+  isForceable: 1
   isDivided: 0

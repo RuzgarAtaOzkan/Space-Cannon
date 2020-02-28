@@ -7,26 +7,31 @@ using UnityEngine.SceneManagement;
 
 //finished the most parts
 
+[RequireComponent(typeof(AudioSource))]
 public class CannonMovement : MonoBehaviour
 {
     public bool isDead = false;
     public bool isBonusActive = false;
     bool isFlashing = true;
+    [SerializeField] public bool startGame;
     [SerializeField] GameObject bullet1, bullet2;
     [SerializeField] ParticleSystem deathFX;
     [SerializeField] Image flashImage;
     [SerializeField] GameObject meteorSpawner;
     [SerializeField] ManageGame manageGame;
-    [SerializeField] public bool startGame;
+    AudioSource audioSource;
+    [SerializeField] public AudioClip cannonDeathSFX;
     Touch touch;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         isDead = false;
         manageGame = FindObjectOfType<ManageGame>();
         flashImage.canvasRenderer.SetAlpha(0.0f);
         isFlashing = true;
         Time.timeScale = 1f;
+        audioSource.Play();
     }
 
     private void Update()
@@ -70,7 +75,7 @@ public class CannonMovement : MonoBehaviour
     private void ProcessDeath()
     {
         isDead = true;
-        
+        AudioSource.PlayClipAtPoint(cannonDeathSFX, transform.position);
         ParticleSystem deathParticle = Instantiate(deathFX, transform.position, Quaternion.identity);
         Transform[] deathParticles = deathParticle.GetComponentsInChildren<Transform>();
         foreach (Transform particle in deathParticles) { particle.localScale = new Vector3(0.4f, 0.4f, 0.4f); }

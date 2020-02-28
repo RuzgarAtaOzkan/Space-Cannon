@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.28667387, g: 0.33541226, b: 0.52154684, a: 1}
+  m_IndirectSpecularColor: {r: 0.28760058, g: 0.3355252, b: 0.5207941, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -128,13 +128,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8824639845887336397, guid: 3950bd599acbcfd4194d882db9244b5e,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -8824639845887336397, guid: 3950bd599acbcfd4194d882db9244b5e,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 129134, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
       propertyPath: m_Name
       value: Cannon_prefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 129134, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 417890, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -181,15 +187,6 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 1459717245, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
-      propertyPath: bonus
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459717245, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
-      propertyPath: deathFX
-      value: 
-      objectReference: {fileID: 198537984209914932, guid: c3fd7df4a850ba54fad59a582eed8d10,
-        type: 3}
-    - target: {fileID: 1459717245, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
       propertyPath: flashImage
       value: 
       objectReference: {fileID: 1591028952}
@@ -197,38 +194,7 @@ PrefabInstance:
       propertyPath: meteorSpawner
       value: 
       objectReference: {fileID: 682623298}
-    - target: {fileID: 5300192954536047419, guid: 3950bd599acbcfd4194d882db9244b5e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2f573e0bc5d8a964e9844d99cfba9320, type: 2}
-    - target: {fileID: 5957681654247553514, guid: 3950bd599acbcfd4194d882db9244b5e,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6224955967911016077, guid: 3950bd599acbcfd4194d882db9244b5e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919629858435605448, guid: 3950bd599acbcfd4194d882db9244b5e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7262587865458830511, guid: 3950bd599acbcfd4194d882db9244b5e,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9217209963134527102, guid: 3950bd599acbcfd4194d882db9244b5e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2f573e0bc5d8a964e9844d99cfba9320, type: 2}
-    m_RemovedComponents:
-    - {fileID: 5099644824926658778, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3950bd599acbcfd4194d882db9244b5e, type: 3}
 --- !u!1 &25506018
 GameObject:
@@ -799,7 +765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: -11.76}
+  m_LocalPosition: {x: 0, y: 8, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -8,11 +8,15 @@ public class MeteorCollision : MonoBehaviour
     [SerializeField] Meteor meteor;
     [SerializeField] MeteorSpawner meteorSpawner;
     [SerializeField] ManageGame manageGame;
+    AudioSource audioSource;
+    [SerializeField] AudioClip meteorGroundHitSFX;
+    [SerializeField] AudioClip meteorSplitSFX;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         meteorSpawner = FindObjectOfType<MeteorSpawner>();
         manageGame = FindObjectOfType<ManageGame>();
     }
@@ -36,6 +40,7 @@ public class MeteorCollision : MonoBehaviour
         if (meteor.meteorHealth < 1)
         {
             meteor.DivideMeteor();
+            if (!audioSource.isPlaying) { audioSource.PlayOneShot(meteorSplitSFX); }
             Destroy(gameObject);
             if (meteorSpawner.meteorQueue.Count > 0) { meteorSpawner.meteorQueue.Dequeue(); } 
         }
@@ -51,8 +56,8 @@ public class MeteorCollision : MonoBehaviour
     {
         if (collision.gameObject.name == "Cube")
         {
+            if (!audioSource.isPlaying) { audioSource.PlayOneShot(meteorGroundHitSFX); }
             rb.AddForce(Vector3.up * 750f);
-            //rb.AddForce(Vector3.left * 30f);
             Handheld.Vibrate();
         }
         if (collision.gameObject.name == gameObject.name && collision.gameObject.GetComponent<Meteor>().isForceable)
