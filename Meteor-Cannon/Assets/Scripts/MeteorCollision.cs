@@ -40,7 +40,6 @@ public class MeteorCollision : MonoBehaviour
         if (meteor.meteorHealth < 1)
         {
             meteor.DivideMeteor();
-            if (!audioSource.isPlaying) { audioSource.PlayOneShot(meteorSplitSFX); }
             Destroy(gameObject);
             if (meteorSpawner.meteorQueue.Count > 0) { meteorSpawner.meteorQueue.Dequeue(); } 
         }
@@ -56,7 +55,6 @@ public class MeteorCollision : MonoBehaviour
     {
         if (collision.gameObject.name == "Cube")
         {
-            if (!audioSource.isPlaying) { audioSource.PlayOneShot(meteorGroundHitSFX); }
             rb.AddForce(Vector3.up * 750f);
             Handheld.Vibrate();
         }

@@ -42,7 +42,7 @@ public class Meteor : MonoBehaviour
     public void DivideMeteor()
     {
         if (isDivided) { return; }
-        var dividedMeteor1 = Instantiate(this, transform.position + Vector3.right, Quaternion.identity);
+        var dividedMeteor1 = Instantiate(this, transform.position, Quaternion.identity);
         var dividedMeteor2 = Instantiate(this, transform.position, Quaternion.identity);
 
         /*if (dividedMeteor1.transform.position.x < dividedMeteor2.transform.position.x)
@@ -60,7 +60,7 @@ public class Meteor : MonoBehaviour
             dividedMeteor2.rb.AddForce(Vector3.right * -5f);
         }*/
 
-        float dividedScale = transform.localScale.x / 2;
+        float dividedScale = transform.localScale.x / 2; //doesnt matter which axis that we take the scale of, all axis are equal
         if (dividedScale < 40f) { dividedScale = 50f; }
         dividedMeteor1.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);
         dividedMeteor2.meteorHealth = Mathf.RoundToInt(firstMeteorHealth / 2);

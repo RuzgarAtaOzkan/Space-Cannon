@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 //finished the most parts
 
-[RequireComponent(typeof(AudioSource))]
 public class CannonMovement : MonoBehaviour
 {
     public bool isDead = false;
     public bool isBonusActive = false;
-    bool isFlashing = true;
+    public bool isFlashing = true;
     [SerializeField] public bool startGame;
     [SerializeField] GameObject bullet1, bullet2;
     [SerializeField] ParticleSystem deathFX;
@@ -31,14 +31,13 @@ public class CannonMovement : MonoBehaviour
         flashImage.canvasRenderer.SetAlpha(0.0f);
         isFlashing = true;
         Time.timeScale = 1f;
-        audioSource.Play();
     }
 
     private void Update()
     {
-        touch = Input.GetTouch(0);
+        //touch = Input.GetTouch(0);
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(touch.position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit)) { transform.position = new Vector3(hit.point.x, transform.position.y, transform.position.z); }
         if (transform.position.x > 4f) { transform.position = new Vector3(4f, transform.position.y, transform.position.z); }
         if (transform.position.x < -4f) { transform.position = new Vector3(-4f, transform.position.y, transform.position.z); }
@@ -103,5 +102,4 @@ public class CannonMovement : MonoBehaviour
         manageGame.isReloadable = true;
         Destroy(gameObject);
     }
-
 }
