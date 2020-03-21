@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.Advertisements;
 
 //finished the most parts
 
@@ -101,5 +102,10 @@ public class CannonMovement : MonoBehaviour
         manageGame.playButton.gameObject.SetActive(true);
         manageGame.isReloadable = true;
         Destroy(gameObject);
+        yield return new WaitForSeconds(0.5f);
+        if (Advertisement.IsReady())
+        {
+            Advertisement.Show();
+        }
     }
 }
