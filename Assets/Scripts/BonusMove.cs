@@ -7,7 +7,7 @@ public class BonusMove : MonoBehaviour
     Rigidbody rb;
     [SerializeField] ParticleSystem bonusFX;
     
-    // test update
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
